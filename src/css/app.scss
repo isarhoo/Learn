@@ -1,1 +1,274 @@
-// app global css in SCSS form
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700&display=swap');
+
+body {
+  background: radial-gradient(circle at 20% 20%, #18254a, #0b132b 40%),
+    radial-gradient(circle at 80% 0%, #1f4068, transparent 40%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 40%);
+  color: #e7ecff;
+  font-family: 'Nunito', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  min-height: 100vh;
+}
+
+.card-ui .q-header {
+  background: linear-gradient(135deg, #1e2a78, #2f4fd7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card-drawer {
+  background: #0f172a;
+  color: #e7ecff;
+}
+
+.drawer-banner {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(47, 79, 215, 0.6), rgba(20, 30, 60, 0.9));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-banner .banner-title {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.drawer-banner .banner-sub {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.menu-page .hero,
+.exponent-page .intro-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: center;
+}
+
+.menu-page .label,
+.exponent-page .label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  color: #7ad7f0;
+  margin-bottom: 8px;
+}
+
+.menu-page .title,
+.exponent-page .title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.menu-page .subtitle,
+.exponent-page .subtitle {
+  margin: 12px 0 18px;
+  color: rgba(231, 236, 255, 0.82);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tip-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 10px;
+  box-shadow: inset 0 0 15px rgba(122, 215, 240, 0.12);
+}
+
+.tip-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hero-card,
+.intro-illustration {
+  position: relative;
+  isolation: isolate;
+}
+
+.poke-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(122, 215, 240, 0.08));
+  border-radius: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), inset 0 0 20px rgba(122, 215, 240, 0.25);
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.poke-card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 0 30px rgba(122, 215, 240, 0.35);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.card-glow {
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(122, 215, 240, 0.25),
+    rgba(255, 215, 0, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  filter: blur(40px);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.poke-card .card-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f6f7fb;
+}
+
+.card-header .energy {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(122, 215, 240, 0.18);
+  border: 1px solid rgba(122, 215, 240, 0.4);
+}
+
+.card-header .rarity {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 215, 0, 0.16);
+  border: 1px solid rgba(255, 215, 0, 0.45);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.card-desc,
+.formula {
+  color: rgba(231, 236, 255, 0.86);
+  line-height: 1.6;
+}
+
+.full-btn {
+  width: 100%;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.deck-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.deck-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.deck-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.deck-body {
+  margin: 10px 0;
+  color: rgba(231, 236, 255, 0.82);
+}
+
+.deck-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exponent-page .badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.rule-card {
+  min-height: 240px;
+}
+
+.rule-card .formula {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.rule-card .details {
+  display: grid;
+  gap: 10px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+}
+
+.detail-row.example {
+  border: 1px dashed rgba(122, 215, 240, 0.3);
+}
+
+.detail-row.hint {
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.16);
+}
+
+.example-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.rule-card.active {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(122, 215, 240, 0.4);
+}
+
+@media (max-width: 600px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
