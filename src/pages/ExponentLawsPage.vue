@@ -319,11 +319,25 @@ function formatNumber(value: number) {
 }
 
 function buildScenario(): Scenario {
-  const card = pairingCards[Math.floor(Math.random() * pairingCards.length)];
+  const cardIndex = pairingCards.length > 0 ? Math.floor(Math.random() * pairingCards.length) : -1;
+  const card = cardIndex >= 0 ? pairingCards[cardIndex] : null;
   const baseVal = randomInRange(2, 7);
   const expA = randomInRange(2, 5);
   const expB = randomInRange(2, 5);
-  const prompt = scenarioTemplates[pairingCards.indexOf(card)];
+  if (!card) {
+    return {
+      title: '預備劇本',
+      prompt: '目前沒有可用的公式卡，請稍後再試。',
+      base: 1,
+      expA: 1,
+      expB: 1,
+      rule: '暫無',
+      answer: '暫無',
+      strategy: '稍後再生成新的挑戰。',
+    };
+  }
+
+  const prompt = scenarioTemplates[cardIndex] || '根據公式判斷最佳出招順序。';
 
   let answer = '';
   switch (card.id) {
