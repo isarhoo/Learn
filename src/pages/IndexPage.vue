@@ -1,85 +1,117 @@
 <template>
   <q-page padding class="menu-page">
-    <div class="hero">
-      <div class="hero-text">
-        <div class="label">指數訓練家大廳</div>
-        <div class="title">組合你的效果卡，開啟指數冒險！</div>
-        <div class="subtitle">
-          這裡是所有挑戰的入口，先檢查套牌，再進入「指數律卡牌圖鑑」面對每條公式的特性。
-        </div>
+    <section class="hero-grid animate__animated animate__fadeInUp">
+      <div class="hero-panel">
+        <q-chip color="primary" text-color="white" icon="auto_awesome" class="glass-chip">新紀元・指數學習港口</q-chip>
+        <h1 class="page-title">沉浸式指數律體驗中心</h1>
+        <p class="page-sub">
+          全面清空過往版面，換上精品科技風的新介面。首頁即是你的導航儀表板，帶你進入互動式「指數律教學」舞台，
+          感受動畫、粒子與光帶交織的學習氛圍。
+        </p>
         <div class="hero-actions">
-          <q-btn color="secondary" unelevated icon="auto_fix_high" label="進入指數律卡牌" to="/exponent-laws" />
-          <q-btn color="white" text-color="primary" flat icon="menu_book" label="快速總覽" @click="showTips = !showTips" />
+          <q-btn color="secondary" unelevated icon="electric_bolt" label="前往指數律教學" to="/exponent-laws" />
+          <q-btn color="white" text-color="primary" flat icon="travel_explore" label="探索特色" @click="highlightFocus" />
         </div>
-        <q-slide-transition>
-          <div v-show="showTips" class="tip-box">
-            <div class="tip-title">教練提醒</div>
-            <ul>
-              <li>每張卡片都代表一條指數律，點擊後可查看詳細效果與範例。</li>
-              <li>大廳維持遊戲風格，隨時可從左側選單切換戰場。</li>
-            </ul>
-          </div>
-        </q-slide-transition>
-      </div>
-      <div class="hero-card poke-card">
-        <div class="card-glow" />
-        <div class="card-content">
-          <div class="card-header">
-            <span class="energy">EXP</span>
-            <span class="rarity">SR</span>
-          </div>
-          <div class="card-title">指數律召喚</div>
-          <div class="card-desc">點擊下方按鈕即可啟動對戰模式，完整收錄所有常見的指數運算公式。</div>
-          <q-btn color="primary" icon="flash_on" label="開始對戰" to="/exponent-laws" class="full-btn" />
+        <div class="status-strip" :class="{ active: focusActive }">
+          <div class="status-label">動態互動模式</div>
+          <div class="status-desc">動畫配色、互動卡片、數值控制與配對遊戲全面啟用</div>
         </div>
       </div>
-    </div>
 
-    <div class="deck-grid">
-      <div class="deck-card" v-for="item in deckOptions" :key="item.title">
-        <div class="deck-header">
-          <q-icon :name="item.icon" />
-          <span>{{ item.title }}</span>
+      <div class="hero-visual">
+        <div class="holo-card animate__animated animate__pulse animate__infinite">
+          <div class="holo-header">
+            <span class="tag">LUX</span>
+            <span class="rarity">SSR</span>
+          </div>
+          <div class="holo-title">Exponent Royale Deck</div>
+          <p class="holo-desc">高亮玻璃質感，導引每一步的指數冒險。</p>
+          <div class="holo-links">
+            <q-btn flat dense icon="apps" label="首頁選單" to="/" />
+            <q-btn flat dense icon="auto_fix_high" label="互動教室" to="/exponent-laws" />
+          </div>
         </div>
-        <div class="deck-body">{{ item.desc }}</div>
-        <div class="deck-footer">
-          <q-btn :color="item.actionColor" :to="item.to" :label="item.action" dense flat icon="chevron_right" />
+        <div class="floating-metrics">
+          <div class="metric-card">
+            <div class="metric-label">動畫佈景</div>
+            <div class="metric-value">Animate.css + 玻璃霓虹</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">體驗模式</div>
+            <div class="metric-value">配對 / 數值重算 / 挑戰劇本</div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="menu-grid animate__animated animate__fadeInUp animate__delay-1s">
+      <q-card v-for="card in menuCards" :key="card.title" class="menu-card">
+        <div class="card-header">
+          <q-icon :name="card.icon" size="32px" color="secondary" />
+          <div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-sub">{{ card.sub }}</div>
+          </div>
+        </div>
+        <p class="card-desc">{{ card.desc }}</p>
+        <div class="card-actions">
+          <q-btn :to="card.to" color="secondary" rounded unelevated :label="card.action" />
+        </div>
+      </q-card>
+    </section>
+
+    <section class="callout animate__animated animate__fadeInUp animate__delay-2s">
+      <div class="callout-text">
+        <div class="callout-title">豪華精品科技風</div>
+        <p>
+          主色採用夜空藍與霓虹青，搭配玻璃質感邊框與微動態光暈。所有入口均導向全新的指數律互動教學，
+          無需翻找舊頁面，即刻啟航。
+        </p>
+      </div>
+      <div class="callout-actions">
+        <q-btn color="white" text-color="primary" flat icon="rocket_launch" label="立即啟動教學" to="/exponent-laws" />
+      </div>
+    </section>
   </q-page>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
-interface DeckCard {
+interface MenuCard {
   title: string;
+  sub: string;
   desc: string;
   icon: string;
   to: string;
   action: string;
-  actionColor: string;
 }
 
-const showTips = ref(false);
+const focusActive = ref(false);
 
-const deckOptions: DeckCard[] = [
+const menuCards: MenuCard[] = [
   {
-    title: '指數律卡牌圖鑑',
-    desc: '查看所有指數公式效果、戰術提示與計算範例，熟悉每一張卡。',
-    icon: 'collections_bookmark',
+    title: '指數律教學主舞台',
+    sub: '動態卡片・數值操控・公式配對',
+    desc: '進入動畫與互動並重的專屬舞台，逐條揭開指數律的奧義，並搭配數值重算、挑戰劇本等遊戲化體驗。',
+    icon: 'electric_bolt',
     to: '/exponent-laws',
-    action: '立即查看',
-    actionColor: 'secondary',
+    action: '前往教學',
   },
   {
-    title: '主選單',
-    desc: '保留在大廳等待下一場對戰，從左側選單切換其他章節。',
-    icon: 'home',
+    title: '豪華首頁選單',
+    sub: '清空重製・精品科技風',
+    desc: '所有入口集中於此，使用霓虹質感與滑入動畫營造高階科技展館，隨時回到起點。',
+    icon: 'dashboard_customize',
     to: '/',
-    action: '留在大廳',
-    actionColor: 'primary',
+    action: '留在首頁',
   },
 ];
+
+function highlightFocus() {
+  focusActive.value = true;
+  setTimeout(() => {
+    focusActive.value = false;
+  }, 1200);
+}
 </script>
